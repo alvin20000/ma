@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-padding-top: 4rem;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply relative px-4 py-2 font-bold text-white hover:text-[#f95006] transition-colors duration-300;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-[#f95006] origin-left transform scale-x-0 transition-transform duration-300;
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    @apply w-full scale-x-100;
+  }
+
+  .nav-link.active {
+    @apply text-[#f95006];
+  }
+
+  .mobile-menu {
+    @apply fixed top-0 right-0 h-[90vh] w-64 bg-[#03168e] shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out rounded-bl-3xl;
+  }
+
+  .mobile-menu.open {
+    @apply translate-x-0;
+  }
+
+  .mobile-menu-item {
+    @apply block py-2 px-6 min-h-[40px] text-lg font-bold text-white hover:text-[#f95006] transition-colors duration-300;
+  }
+
+  .service-card {
+    @apply bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl animate-scaleIn;
+  }
+
+  .team-member-image {
+    @apply rounded-full border-4 border-[#f95006] transition-all duration-300 hover:rotate-6 hover:border-[#03168e];
+  }
+
+  .review-card {
+    @apply bg-white p-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-xl animate-fadeIn;
+  }
+
+  .social-icon {
+    @apply text-white/80 hover:text-[#f95006] transition-all duration-300 transform hover:scale-110;
+  }
+
+  .scroll-to-top {
+    @apply fixed bottom-6 right-6 bg-[#f95006] text-white p-3 rounded-full shadow-lg cursor-pointer opacity-0 transition-all duration-300 hover:bg-[#03168e] hover:scale-110;
+  }
+
+  .scroll-to-top.visible {
+    @apply opacity-100;
+  }
+
+  .gallery-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4;
+  }
+
+  .gallery-item {
+    @apply relative overflow-hidden rounded-lg cursor-pointer animate-scaleIn;
+  }
+
+  .gallery-overlay {
+    @apply absolute inset-0 bg-[#03168e]/50 backdrop-blur-sm flex items-center justify-center opacity-0 transition-all duration-300;
+  }
+
+  .gallery-item:hover .gallery-overlay {
+    @apply opacity-100;
+  }
+}
+
+/* Custom Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
