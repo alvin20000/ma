@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, Search } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Booking from './Booking';
+import logo from '../assets/images/logos/logo.png';
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -86,7 +87,7 @@ export default function Header() {
               transition={{ duration: 0.5 }}
             >
               <img
-              src="/src/assets/images/logos/logo.png"
+              src={logo}
               alt="M.A Events Logo"
               className="h-full w-auto"
               style={{ width: 'auto', height: '100%' }}

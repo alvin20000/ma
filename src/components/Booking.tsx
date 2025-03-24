@@ -21,7 +21,7 @@ const Booking = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const message = `New Booking Request\n\nName: ${formData.name}\nPhone: ${formData.phone}\nService: ${formData.service}\nDescription: ${formData.description}`;
-    const whatsappUrl = `https://wa.me/256763721005?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/256751256167?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 

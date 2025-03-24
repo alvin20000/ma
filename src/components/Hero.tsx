@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import firstImage from '../assets/images/gallery/7.jpg';
+import secondImage from '../assets/images/gallery/9.jpg';
+import thirdImage from '../assets/images/gallery/3.jpg';
 
 const slides = [
   {
-    image: "/src/assets/images/gallery/7.jpg",
+    image: firstImage,
     title: "Creating Unforgettable Moments",
     subtitle: "Your Premier Event Planning Partner"
   },
   {
-    image: "/src/assets/images/gallery/9.jpg",
+    image: secondImage,
     title: "Exquisite Catering Services",
     subtitle: "Culinary Excellence for Every Occasion"
   },
   {
-    image: "/src/assets/images/gallery/3.jpg",
+    image: thirdImage,
     title: "Stunning Decorations",
     subtitle: "Transform Any Space into Something Magical"
   }
