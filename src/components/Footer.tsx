@@ -1,5 +1,6 @@
 import { Facebook, Instagram, Twitter, Mail, Search } from 'lucide-react';
 import { motion } from 'framer-motion';
+import footerImage from '../assets/images/logos/logo.png';
 
 export default function Footer() {
   return (
@@ -15,7 +16,7 @@ export default function Footer() {
               transition={{ duration: 0.5 }}
             >
               <img
-              src="/src/assets/images/logos/logo.png"
+              src={footerImage}
               alt="M.A Events Logo"
               className="h-full w-auto"
               style={{ width: 'auto', height: '100%' }}

@@ -42,10 +42,10 @@ export default function AboutUs() {
             className="bg-white p-8 rounded-lg shadow-lg"
           >
             <h3 className="text-2xl font-semibold text-[#03168e] mb-4">Our Story</h3>
-            <p className="text-gray-600 mb-6">
-              Founded in 2015, M.A Events has grown from a small family business into one of the most trusted names in event planning and catering. Our journey has been marked by countless successful events, happy clients, and unforgettable moments.
+            <p className="text-gray-600 mb-6 text-center">
+              Founded in 2018, M.A Events has grown from a small family business into one of the most trusted names in event planning and catering. Our journey has been marked by countless successful events, happy clients, and unforgettable moments.
             </p>
-            <p className="text-gray-600">
+            <p className="text-gray-600 text-center">
               We believe that every event tells a unique story, and we're here to help you tell yours in the most beautiful and memorable way possible.
             </p>
           </motion.div>

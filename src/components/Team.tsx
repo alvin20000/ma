@@ -1,40 +1,46 @@
 import { motion } from 'framer-motion';
+import team1 from '../assets/images/team/josephine.jpg';
+import team2 from '../assets/images/team/ausi.jpg';
+import team3 from '../assets/images/team/alvin.jpg';
+import team4 from '../assets/images/team/kato.jpg';
+import team5 from '../assets/images/team/moris.jpg';
+import team6 from '../assets/images/team/yabu.png';
 
 const team = [
   {
     name: "Nambalirwa Josephine",
     position: "Event Director",
-    image: "/src/assets/images/team/josephine.jpg",
+    image: team1,
     bio: "10+ years of experience in luxury event planning"
   },
   {
     name: "Ausi Walukagga",
     position: "Head Chef",
-    image: "/src/assets/images/team/ausi.jpg",
+    image: team2,
     bio: "Award-winning culinary expert specializing in fusion cuisine"
   },
   {
     name: "Bongole Alvin",
     position: "Decor Specialist",
-    image: "/src/assets/images/team/alvin.jpg",
+    image: team3,
     bio: "Creative genius behind our stunning event designs"
   },
   {
-    name: "Kato Francis",
+    name: "Kato",
     position: "Event specialist",
-    image: "/src/assets/images/team/kato.jpg",
+    image: team4,
     bio: "10+ years of experience in luxury event planning"
   },
   {
     name: "Moris",
     position: "Head Chef",
-    image: "/src/assets/images/team/moris.jpg",
+    image: team5,
     bio: "Award-winning culinary expert specializing in fusion cuisine"
   },
   {
     name: "Yabu",
     position: "Decor Specialist",
-    image: "/src/assets/images/team/yabu.png",
+    image: team6,
     bio: "Creative genius behind our stunning event designs"
   }
 ];
