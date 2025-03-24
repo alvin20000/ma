@@ -43,10 +43,10 @@ export default function AboutUs() {
           >
             <h3 className="text-2xl font-semibold text-[#03168e] mb-4">Our Story</h3>
             <p className="text-gray-600 mb-6 text-center">
-              Founded in 2018, M.A Events has grown from a small family business into one of the most trusted names in event planning and catering. Our journey has been marked by countless successful events, happy clients, and unforgettable moments.
+              Founded in 2008, M.A Events has grown from a small family business into one of the most trusted names in Event planning and Catering. Our journey has been marked by countless successful Events, happy clients, and unforgettable moments.
             </p>
             <p className="text-gray-600 text-center">
-              We believe that every event tells a unique story, and we're here to help you tell yours in the most beautiful and memorable way possible.
+              We believe that every Event tells a unique story, and we're here to help you tell yours in the most beautiful and memorable way possible.
             </p>
           </motion.div>
 
@@ -78,17 +78,17 @@ export default function AboutUs() {
             {
               icon: <Target className="w-12 h-12 text-[#f95006]" />,
               title: 'Our Mission',
-              content: 'To create extraordinary events that exceed expectations and leave lasting impressions, while delivering exceptional value and personalized service to every client.'
+              content: 'To create extraordinary Events that exceed expectations and leave lasting impressions, while delivering exceptional value and personalized service to every client.'
             },
             {
               icon: <Heart className="w-12 h-12 text-[#f95006]" />,
               title: 'Our Vision',
-              content: 'To be the most trusted and innovative event planning company, known for creating magical moments and transforming dreams into reality.'
+              content: 'To be the most trusted and innovative Event planning company, known for creating magical moments and transforming dreams into reality.'
             },
             {
               icon: <Star className="w-12 h-12 text-[#f95006]" />,
               title: 'Our Values',
-              content: ['Excellence in Service', 'Creativity & Innovation', 'Integrity & Transparency', 'Customer Satisfaction']
+              content: ['Excellence in Service', 'Creativity & Innovation', 'Integrity & Transparency', 'Customer Satisfaction', 'Bringing Grate Ideas Every Day', 'Teamwork & Collaboration']
             }
           ].map((item, index) => (
             <motion.div

@@ -1,23 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Star } from 'lucide-react';
+import imageReview1 from '../assets/images/reviews/alex.jpg';
+import imageReview2 from '../assets/images/reviews/David.jpg';
+import imageReview3 from '../assets/images/reviews/Farid.jpg';
 
 const reviews = [
   {
-    name: "Jessica Smith",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
+    name: "Alex Kazungu",
+    image: imageReview1,
     rating: 5,
     text: "M.A Events made our wedding day absolutely perfect! The attention to detail was incredible."
   },
   {
-    name: "David Brown",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
+    name: "Zimula Farid",
+    image: imageReview2,
     rating: 5,
     text: "Outstanding corporate event management. Professional team and excellent service."
   },
   {
-    name: "Maria Garcia",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
+    name: "Vicent Lapter",
+    image: imageReview3,
     rating: 5,
     text: "The best catering service in town! Our guests couldn't stop praising the food."
   }
