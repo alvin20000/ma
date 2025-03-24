@@ -13,13 +13,13 @@ const reviews = [
     text: "M.A Events made our wedding day absolutely perfect! The attention to detail was incredible."
   },
   {
-    name: "Zimula Farid",
+    name: "Ladu David",
     image: imageReview2,
     rating: 5,
     text: "Outstanding corporate event management. Professional team and excellent service."
   },
   {
-    name: "Vicent Lapter",
+    name: "Zimula Farid",
     image: imageReview3,
     rating: 5,
     text: "The best catering service in town! Our guests couldn't stop praising the food."

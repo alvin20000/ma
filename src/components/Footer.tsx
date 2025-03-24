@@ -10,10 +10,11 @@ export default function Footer() {
           <div className="animate-fadeIn">
             <div className="flex items-center">
             <motion.div 
-              className="h-16 ml-4"
+              className="h-16 ml-4 md:ml-0 md:flex md:items-center md:justify-start"
               initial={{ opacity: 0, x: -80 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
+              style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
             >
               <img
               src={footerImage}

@@ -15,27 +15,27 @@ const team = [
   },
   {
     name: "Ausi Walukagga",
-    position: "Head Chef",
+    position: "Head Chef and Decor Expert",
     image: team2,
-    bio: "Award-winning culinary expert specializing in fusion cuisine"
+    bio: "Master of culinary arts and decor, ensuring every Event is a feast for the senses"
   },
   {
     name: "Bongole Alvin",
     position: "Decor Specialist",
     image: team3,
-    bio: "Creative genius behind our stunning event designs"
+    bio: "Creative genius behind our stunning Event designs"
   },
   {
     name: "Kato",
-    position: "Event specialist",
+    position: "Decor and Events specialist",
     image: team4,
-    bio: "10+ years of experience in luxury event planning"
+    bio: "Expert in crafting elegant and memorable Event experiences"
   },
   {
     name: "Moris",
-    position: "Head Chef",
+    position: "Decor Specialist",
     image: team5,
-    bio: "Award-winning culinary expert specializing in fusion cuisine"
+    bio: "Passionate about creating unique and memorable Event decorations"
   },
   {
     name: "Yabu",
