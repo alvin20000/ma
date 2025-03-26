@@ -74,18 +74,18 @@ const TrendingEvents = () => {
   }, []);
 
   return (
-    <section className="py-16 bg-gray-50 overflow-hidden">
-      <div className="container mx-auto px-4">
+    <section className="py-12 sm:py-16 bg-gray-50 overflow-hidden -mx-2 sm:-mx-4 md:-mx-8">
+      <div className="container mx-auto px-2 sm:px-4">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-4xl font-bold text-center text-[#03168e] mb-12"
+          className="text-3xl sm:text-4xl font-bold text-center text-[#03168e] mb-8 sm:mb-12"
         >
           Trending Events
         </motion.h2>
 
-        <div className="relative h-[500px] w-full">
+        <div className="relative h-[400px] sm:h-[500px] w-full">
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
               key={currentIndex}
@@ -111,7 +111,7 @@ const TrendingEvents = () => {
               }}
               className="absolute w-full h-full"
             >
-              <div className="relative w-full h-full rounded-2xl overflow-hidden group">
+              <div className="relative w-full h-full rounded-xl sm:rounded-2xl overflow-hidden group">
                 <img
                   src={`${trendingEvents[currentIndex].image}?auto=format&fit=crop&w=1600&q=80`}
                   alt={trendingEvents[currentIndex].title}
@@ -122,12 +122,12 @@ const TrendingEvents = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="absolute bottom-0 left-0 right-0 p-8 text-white"
+                  className="absolute bottom-0 left-0 right-0 p-4 sm:p-8 text-white"
                 >
-                  <span className="inline-block px-4 py-1 bg-[#f95006] rounded-full text-sm mb-4">
+                  <span className="inline-block px-3 py-1 bg-[#f95006] rounded-full text-sm mb-2 sm:mb-4">
                     {trendingEvents[currentIndex].category}
                   </span>
-                  <h3 className="text-3xl font-bold mb-2">{trendingEvents[currentIndex].title}</h3>
+                  <h3 className="text-2xl sm:text-3xl font-bold mb-2">{trendingEvents[currentIndex].title}</h3>
                 </motion.div>
               </div>
             </motion.div>
@@ -136,19 +136,19 @@ const TrendingEvents = () => {
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 p-3 rounded-full text-[#03168e] hover:bg-[#f95006] hover:text-white transition-all z-10"
+            className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-white/80 p-2 sm:p-3 rounded-full text-[#03168e] hover:bg-[#f95006] hover:text-white transition-all z-10"
             onClick={() => paginate(-1)}
           >
-            <ChevronLeft size={24} />
+            <ChevronLeft size={20} />
           </motion.button>
 
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 p-3 rounded-full text-[#03168e] hover:bg-[#f95006] hover:text-white transition-all z-10"
+            className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-white/80 p-2 sm:p-3 rounded-full text-[#03168e] hover:bg-[#f95006] hover:text-white transition-all z-10"
             onClick={() => paginate(1)}
           >
-            <ChevronRight size={24} />
+            <ChevronRight size={20} />
           </motion.button>
 
           <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
@@ -158,7 +158,7 @@ const TrendingEvents = () => {
                 initial={{ scale: 0.8 }}
                 animate={{ scale: currentIndex === index ? 1.2 : 1 }}
                 transition={{ duration: 0.3 }}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
                   currentIndex === index ? 'bg-[#f95006]' : 'bg-white'
                 }`}
                 onClick={() => setCurrentIndex(index)}

@@ -40,7 +40,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="relative w-screen h-[80vh] -mx-8 overflow-hidden">
+    <section id="home" className="relative w-screen -mx-2 sm:-mx-4 md:-mx-8 h-[80vh] overflow-hidden">
       {slides.map((slide, index) => (
         <motion.div
           key={index}
@@ -59,13 +59,13 @@ export default function Hero() {
             }}
           />
           <div className="absolute inset-0 bg-black bg-opacity-50" />
-          <div className="absolute inset-0 flex items-center justify-center text-center">
-            <div className="max-w-4xl px-4">
+          <div className="absolute inset-0 flex items-center justify-center text-center px-4">
+            <div className="max-w-4xl">
               <motion.h1
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: currentSlide === index ? 0 : 20, opacity: currentSlide === index ? 1 : 0 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
-                className="text-4xl md:text-6xl font-bold text-white mb-4"
+                className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-4"
               >
                 {slide.title}
               </motion.h1>
@@ -73,7 +73,7 @@ export default function Hero() {
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: currentSlide === index ? 0 : 20, opacity: currentSlide === index ? 1 : 0 }}
                 transition={{ delay: 0.4, duration: 0.5 }}
-                className="text-xl md:text-2xl text-white mb-8"
+                className="text-lg sm:text-xl md:text-2xl text-white mb-8"
               >
                 {slide.subtitle}
               </motion.p>
@@ -82,7 +82,7 @@ export default function Hero() {
                 animate={{ y: currentSlide === index ? 0 : 20, opacity: currentSlide === index ? 1 : 0 }}
                 transition={{ delay: 0.6, duration: 0.5 }}
                 onClick={scrollToServices}
-                className="bg-[#f95006] text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-[#03168e] transition-all duration-300 transform hover:scale-105"
+                className="bg-[#f95006] text-white px-6 sm:px-8 py-3 rounded-full text-lg font-semibold hover:bg-[#03168e] transition-all duration-300 transform hover:scale-105"
               >
                 Select Service
               </motion.button>

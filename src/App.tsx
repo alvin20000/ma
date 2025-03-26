@@ -21,7 +21,7 @@ function App() {
       className="min-h-screen pt-16 overflow-x-hidden"
     >
       <Header />
-      <main className="mx-8">
+      <main className="mx-2 sm:mx-4 md:mx-8">
         <Hero />
         <TrendingEvents />
         <Services />
