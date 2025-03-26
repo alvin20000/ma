@@ -4,20 +4,20 @@ import team2 from '../assets/images/team/ausi.jpg';
 import team3 from '../assets/images/team/alvin.jpg';
 import team4 from '../assets/images/team/kato.jpg';
 import team5 from '../assets/images/team/moris.jpg';
-import team6 from '../assets/images/team/yabu.png';
+import team6 from '../assets/images/team/bash.jpg';
 
 const team = [
   {
     name: "Nambalirwa Josephine",
     position: "Event Director",
     image: team1,
-    bio: "10+ years of experience in luxury event planning"
+    bio: "10+ years of experience in luxury Event planning"
   },
   {
     name: "Ausi Walukagga",
-    position: "Head Chef and Decor Expert",
+    position: "Decor Expert",
     image: team2,
-    bio: "Master of culinary arts and decor, ensuring every Event is a feast for the senses"
+    bio: "Specialist in creating beautiful decor setups"
   },
   {
     name: "Bongole Alvin",
@@ -26,7 +26,7 @@ const team = [
     bio: "Creative genius behind our stunning Event designs"
   },
   {
-    name: "Kato",
+    name: "Kato Francis",
     position: "Decor and Events specialist",
     image: team4,
     bio: "Expert in crafting elegant and memorable Event experiences"
@@ -38,10 +38,10 @@ const team = [
     bio: "Passionate about creating unique and memorable Event decorations"
   },
   {
-    name: "Yabu",
-    position: "Decor Specialist",
+    name: "Dj Bash",
+    position: "Head of Sound System",
     image: team6,
-    bio: "Creative genius behind our stunning event designs"
+    bio: "Ensures top-notch sound quality for all our Events"
   }
 ];
 

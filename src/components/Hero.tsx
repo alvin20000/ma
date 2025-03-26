@@ -12,7 +12,7 @@ const slides = [
   },
   {
     image: secondImage,
-    title: "Exquisite Catering Services",
+    title: "Making Your Decor colourful",
     subtitle: "Culinary Excellence for Every Occasion"
   },
   {

@@ -44,43 +44,36 @@ const galleryItems = [
     id: 6,
     image: image6,
     title: "Garden Wedding",
-    price: "$3,499"
   },
   {
     id: 7,
     image: image7,
     title: "Anniversary Celebration",
-    price: "$1,299"
   },
   {
     id: 8,
     image: image8,
     title: "Themed Party Setup",
-    price: "$1,799"
   },
   {
     id: 9,
     image: image9,
     title: "Themed Party Setup",
-    price: "$1,799"
   },
   {
     id: 10,
     image: image10,
     title: "Themed Party Setup",
-    price: "$1,799"
   },
   {
     id: 11,
     image: image11,
     title: "Themed Party Setup",
-    price: "$1,799"
   },
   {
     id: 12,
     image: image12,
     title: "Themed Party Setup",
-    price: "$1,799"
   }
 ];
 

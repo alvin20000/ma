@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Tent, Utensils, Camera, Music } from 'lucide-react';
 
@@ -56,7 +55,7 @@ const Services = () => {
               <h3 className="text-xl font-semibold text-[#03168e] mb-2">{service.title}</h3>
               <p className="text-gray-600 mb-4">{service.description}</p>
               <a
-                href={`https://wa.me/256751256167?text=I'm interested in your ${service.title} service`}
+                href={`https://wa.me/256703040445?text=I'm interested in your ${service.title} service`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-4 py-2 bg-[#03168e] text-white font-semibold rounded-lg hover:bg-[#f95006] transition-colors"

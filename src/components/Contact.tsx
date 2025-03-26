@@ -61,7 +61,7 @@ export default function Contact() {
             <iframe
               src="https://www.google.com/maps/place/M.A+Events/@1.3681551,32.303241,7z/data=!3m1!4b1!4m6!3m5!1s0x4f12fe77d3f1a53:0xa5dff22f1b3723fc!8m2!3d1.3681551!4d32.303241!16s%2Fg%2F11x0nlr4t8?hl=en-GB&entry=ttu&g_ep=EgoyMDI1MDMxOS4yIKXMDSoASAFQAw%3D%3D"
               width="100%"
-              height="450"
+              height="550"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
@@ -114,7 +114,7 @@ export default function Contact() {
             <div className="mt-8 space-y-4">
               {[
                 { icon: <MapPin />, text: "Mbiko, Kyabaggu Zone" },
-                { icon: <Phone />, text: "+256 751 256167" },
+                { icon: <Phone />, text: "+256 782 876390 | +256 751 256167 | +256 703 040445" },
                 { icon: <Mail />, text: "maevents975@gmail.com" }
               ].map((item, index) => (
                 <motion.div
