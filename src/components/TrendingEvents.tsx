@@ -1,0 +1,174 @@
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
+const trendingEvents = [
+  {
+    id: 1,
+    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622",
+    title: "Modern Wedding Setup",
+    category: "Wedding"
+  },
+  {
+    id: 2,
+    image: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3",
+    title: "Corporate Conference",
+    category: "Business"
+  },
+  {
+    id: 3,
+    image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745",
+    title: "Birthday Celebration",
+    category: "Party"
+  },
+  {
+    id: 4,
+    image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30",
+    title: "Graduation Ceremony",
+    category: "Academic"
+  },
+  {
+    id: 5,
+    image: "https://images.unsplash.com/photo-1505236858219-8359eb29e329",
+    title: "Garden Party",
+    category: "Outdoor"
+  }
+];
+
+const TrendingEvents = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+
+  const slideVariants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? 1000 : -1000,
+      opacity: 0
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1
+    },
+    exit: (direction: number) => ({
+      zIndex: 0,
+      x: direction < 0 ? 1000 : -1000,
+      opacity: 0
+    })
+  };
+
+  const swipeConfidenceThreshold = 10000;
+  const swipePower = (offset: number, velocity: number) => {
+    return Math.abs(offset) * velocity;
+  };
+
+  const paginate = (newDirection: number) => {
+    setDirection(newDirection);
+    setCurrentIndex((prevIndex) => (prevIndex + newDirection + trendingEvents.length) % trendingEvents.length);
+  };
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      paginate(1);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <section className="py-16 bg-gray-50 overflow-hidden">
+      <div className="container mx-auto px-4">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-4xl font-bold text-center text-[#03168e] mb-12"
+        >
+          Trending Events
+        </motion.h2>
+
+        <div className="relative h-[500px] w-full">
+          <AnimatePresence initial={false} custom={direction}>
+            <motion.div
+              key={currentIndex}
+              custom={direction}
+              variants={slideVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{
+                x: { type: "spring", stiffness: 300, damping: 30 },
+                opacity: { duration: 0.2 }
+              }}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={1}
+              onDragEnd={(e, { offset, velocity }) => {
+                const swipe = swipePower(offset.x, velocity.x);
+                if (swipe < -swipeConfidenceThreshold) {
+                  paginate(1);
+                } else if (swipe > swipeConfidenceThreshold) {
+                  paginate(-1);
+                }
+              }}
+              className="absolute w-full h-full"
+            >
+              <div className="relative w-full h-full rounded-2xl overflow-hidden group">
+                <img
+                  src={`${trendingEvents[currentIndex].image}?auto=format&fit=crop&w=1600&q=80`}
+                  alt={trendingEvents[currentIndex].title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="absolute bottom-0 left-0 right-0 p-8 text-white"
+                >
+                  <span className="inline-block px-4 py-1 bg-[#f95006] rounded-full text-sm mb-4">
+                    {trendingEvents[currentIndex].category}
+                  </span>
+                  <h3 className="text-3xl font-bold mb-2">{trendingEvents[currentIndex].title}</h3>
+                </motion.div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 p-3 rounded-full text-[#03168e] hover:bg-[#f95006] hover:text-white transition-all z-10"
+            onClick={() => paginate(-1)}
+          >
+            <ChevronLeft size={24} />
+          </motion.button>
+
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 p-3 rounded-full text-[#03168e] hover:bg-[#f95006] hover:text-white transition-all z-10"
+            onClick={() => paginate(1)}
+          >
+            <ChevronRight size={24} />
+          </motion.button>
+
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+            {trendingEvents.map((_, index) => (
+              <motion.button
+                key={index}
+                initial={{ scale: 0.8 }}
+                animate={{ scale: currentIndex === index ? 1.2 : 1 }}
+                transition={{ duration: 0.3 }}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  currentIndex === index ? 'bg-[#f95006]' : 'bg-white'
+                }`}
+                onClick={() => setCurrentIndex(index)}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default TrendingEvents;

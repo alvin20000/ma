@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import TrendingEvents from './components/TrendingEvents';
 import Services from './components/Services';
 import Gallery from './components/Gallery';
 import AboutUs from './components/AboutUs';
@@ -22,6 +23,7 @@ function App() {
       <Header />
       <main className="mx-8">
         <Hero />
+        <TrendingEvents />
         <Services />
         <Gallery />
         <AboutUs />
