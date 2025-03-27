@@ -59,7 +59,7 @@ export default function Contact() {
             variants={formVariants}
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d237.01846887168227!2d33.155409594500036!3d0.43625945618734174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177e79c6ca910661%3A0xbebb5488b2a43325!2sKyabagu%20zone%20market!5e1!3m2!1sen!2sug!4v1743083601480!5m2!1sen!2sug"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3882324.5571428523!2d27.275712601919633!3d1.3628933972946826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4f12fe77d3f1a53%3A0xa5dff22f1b3723fc!2sM.A%20Events!5e1!3m2!1sen!2sug!4v1743084198114!5m2!1sen!2sug"
               width="100%"
               height="550"
               style={{ border: 0 }}
