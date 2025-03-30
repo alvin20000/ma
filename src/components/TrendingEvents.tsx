@@ -1,35 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import trendingImage_1 from '../assets/images/trending_1.jpg';
+import trendingImage_2 from '../assets/images/trending_2.jpg';
+import trendingImage_3 from '../assets/images/trending_3.jpg';
+import trendingImage_4 from '../assets/images/trending_4.jpg';
+import trendingImage_5 from '../assets/images/trending_5.jpg';
 
 const trendingEvents = [
   {
     id: 1,
-    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622",
+    image: trendingImage_1,
     title: "Modern Wedding Setup",
     category: "Wedding"
   },
   {
     id: 2,
-    image: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3",
+    image: trendingImage_2,
     title: "Corporate Conference",
     category: "Business"
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745",
+    image: trendingImage_3,
     title: "Birthday Celebration",
     category: "Party"
   },
   {
     id: 4,
-    image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30",
+    image: trendingImage_4,
     title: "Graduation Ceremony",
     category: "Academic"
   },
   {
     id: 5,
-    image: "https://images.unsplash.com/photo-1505236858219-8359eb29e329",
+    image: trendingImage_5,
     title: "Garden Party",
     category: "Outdoor"
   }
