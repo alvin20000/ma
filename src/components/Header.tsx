@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Search } from 'lucide-react';
+import { Menu, X, Search, Download } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Booking from './Booking';
 import logo from '../assets/images/logos/logo.png';
@@ -11,6 +11,7 @@ export default function Header() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [showBooking, setShowBooking] = useState(false);
+  const [showDownloadPopup, setShowDownloadPopup] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,6 +64,13 @@ export default function Header() {
     }
   };
 
+  const handleDownloadApp = () => {
+    setShowDownloadPopup(true);
+    setTimeout(() => {
+      setShowDownloadPopup(false);
+    }, 5000);
+  };
+
   const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
     <motion.a
       href={href}
@@ -81,16 +89,15 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <motion.div 
-              className="h-16 ml-8"
-              initial={{ opacity: 0, x: -90 }}
+              className="h-10"
+              initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
               <img
-              src={logo}
-              alt="M.A Events Logo"
-              className="h-full w-auto"
-              style={{ width: 'auto', height: '100%' }}
+                src={logo}
+                alt="M.A Events Logo"
+                className="h-full w-auto"
               />
             </motion.div>
           </div>
@@ -103,6 +110,14 @@ export default function Header() {
             <NavLink href="#team">Team</NavLink>
             <NavLink href="#reviews">Reviews</NavLink>
             <NavLink href="#contact">Contact</NavLink>
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={handleDownloadApp}
+              className="text-white hover:text-[#f95006] transition-colors duration-300 px-2"
+            >
+              <Download size={20} />
+            </motion.button>
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
@@ -165,7 +180,17 @@ export default function Header() {
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
             className="mobile-menu"
           >
-            <div className="flex flex-col pt-16 space-y-2">
+            <div className="flex justify-end p-4">
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-white hover:text-[#f95006]"
+              >
+                <X size={24} />
+              </motion.button>
+            </div>
+            <div className="flex flex-col space-y-2">
               <NavLink href="#home">Home</NavLink>
               <NavLink href="#services">Services</NavLink>
               <NavLink href="#gallery">Gallery</NavLink>
@@ -173,6 +198,15 @@ export default function Header() {
               <NavLink href="#team">Team</NavLink>
               <NavLink href="#reviews">Reviews</NavLink>
               <NavLink href="#contact">Contact</NavLink>
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={handleDownloadApp}
+                className="text-white hover:text-[#f95006] transition-colors duration-300 px-6 py-2 flex items-center gap-2"
+              >
+                <Download size={20} />
+                <span>Download App</span>
+              </motion.button>
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
@@ -184,6 +218,49 @@ export default function Header() {
               >
                 Book Now
               </motion.button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {showDownloadPopup && (
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -50 }}
+            className="fixed top-20 right-4 bg-white rounded-lg shadow-xl p-4 max-w-sm z-50"
+          >
+            <div className="flex items-start">
+              <div className="flex-shrink-0 text-[#f95006]">
+                <Download size={24} />
+              </div>
+              <div className="ml-3">
+                <h3 className="text-lg font-semibold text-gray-900">Download M-A App</h3>
+                <p className="mt-1 text-sm text-gray-500">
+                  Get the M-A Events app for a better experience. Available on iOS and Android.
+                </p>
+                <div className="mt-3 flex space-x-2">
+                  <a
+                    href="#"
+                    className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-[#f95006] hover:bg-[#03168e] transition-colors"
+                  >
+                    App Store
+                  </a>
+                  <a
+                    href="#"
+                    className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-[#f95006] hover:bg-[#03168e] transition-colors"
+                  >
+                    Play Store
+                  </a>
+                </div>
+              </div>
+              <button
+                onClick={() => setShowDownloadPopup(false)}
+                className="ml-auto flex-shrink-0 text-gray-400 hover:text-gray-500"
+              >
+                <X size={20} />
+              </button>
             </div>
           </motion.div>
         )}

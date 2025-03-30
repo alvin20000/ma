@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import TrendingEvents from './components/TrendingEvents';
 import Services from './components/Services';
+import VideoSection from './components/VideoSection';
 import Gallery from './components/Gallery';
 import AboutUs from './components/AboutUs';
 import Team from './components/Team';
@@ -25,6 +26,7 @@ function App() {
         <Hero />
         <TrendingEvents />
         <Services />
+        <VideoSection />
         <Gallery />
         <AboutUs />
         <Team />
