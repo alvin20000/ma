@@ -17,25 +17,25 @@ const trendingEvents = [
   {
     id: 2,
     image: trendingImage_2,
-    title: "Corporate Conference",
-    category: "Business"
+    title: "Corporate Wedding ceremony",
+    category: "Wedding"
   },
   {
     id: 3,
     image: trendingImage_3,
-    title: "Birthday Celebration",
-    category: "Party"
+    title: "Modern Inroduction Setup",
+    category: "Introduction Party"
   },
   {
     id: 4,
     image: trendingImage_4,
-    title: "Graduation Ceremony",
-    category: "Academic"
+    title: "Garden Party",
+    category: "Outdoor"
   },
   {
     id: 5,
     image: trendingImage_5,
-    title: "Garden Party",
+    title: "Creative Introduction Ceremony",
     category: "Outdoor"
   }
 ];

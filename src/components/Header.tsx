@@ -89,15 +89,15 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <motion.div 
-              className="h-10"
+              className="h-16 ml-8"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
               <img
-                src={logo}
-                alt="M.A Events Logo"
-                className="h-full w-auto"
+              src={logo}
+              alt="M.A Events Logo"
+              className="h-full w-auto"
               />
             </motion.div>
           </div>
