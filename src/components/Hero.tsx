@@ -40,7 +40,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="relative w-screen -mx-2 sm:-mx-4 md:-mx-8 h-[80vh] overflow-hidden">
+    <section id="home" className="relative w-screen h-[80vh] lg:h-screen lg:w-screen -mx-2 sm:-mx-4 md:-mx-8 overflow-hidden">
       {slides.map((slide, index) => (
         <motion.div
           key={index}
@@ -82,7 +82,7 @@ export default function Hero() {
                 animate={{ y: currentSlide === index ? 0 : 20, opacity: currentSlide === index ? 1 : 0 }}
                 transition={{ delay: 0.6, duration: 0.5 }}
                 onClick={scrollToServices}
-                className="bg-[#f95006] text-white px-6 sm:px-8 py-3 rounded-full text-lg font-semibold hover:bg-[#03168e] transition-all duration-300 transform hover:scale-105"
+                className="glass-btn text-lg px-6 sm:px-8 py-3"
               >
                 Select Service
               </motion.button>
@@ -98,9 +98,7 @@ export default function Hero() {
             initial={{ scale: 0.8 }}
             animate={{ scale: currentSlide === index ? 1.2 : 1 }}
             transition={{ duration: 0.3 }}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              currentSlide === index ? 'bg-[#f95006]' : 'bg-white bg-opacity-50'
-            }`}
+            className={`glass-btn w-3 h-3 p-0 rounded-full transition-all duration-300 ${currentSlide === index ? 'ring-2 ring-[#f95006]' : ''}`}
             onClick={() => setCurrentSlide(index)}
           />
         ))}

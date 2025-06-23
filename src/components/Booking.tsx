@@ -125,7 +125,7 @@ const Booking = () => {
             type="submit"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="w-full bg-[#f95006] text-white font-semibold py-3 rounded-lg hover:bg-[#03168e] transition-colors"
+            className="w-full glass-btn font-semibold py-3"
           >
             Send to WhatsApp
           </motion.button>

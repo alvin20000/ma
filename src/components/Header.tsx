@@ -74,7 +74,7 @@ export default function Header() {
   const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
     <motion.a
       href={href}
-      className={`nav-link text-white hover:text-[#f95006] ${activeSection === href.replace('#', '') ? 'active' : ''}`}
+      className={`nav-link nav-link-glass ${activeSection === href.replace('#', '') ? 'active' : ''}`}
       onClick={handleNavClick}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
@@ -84,7 +84,7 @@ export default function Header() {
   );
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#03168e] h-16">
+    <header className="fixed top-0 left-0 right-0 z-50 h-16 header-glass">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
@@ -114,7 +114,7 @@ export default function Header() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               onClick={handleDownloadApp}
-              className="text-white hover:text-[#f95006] transition-colors duration-300 px-2"
+              className="glass-btn"
             >
               <Download size={20} />
             </motion.button>
@@ -122,7 +122,7 @@ export default function Header() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setShowBooking(true)}
-              className="bg-[#f95006] text-white px-4 py-2 rounded-full hover:bg-white hover:text-[#f95006] transition-all duration-300 ml-2"
+              className="glass-btn ml-2"
             >
               Book Now
             </motion.button>
@@ -132,18 +132,18 @@ export default function Header() {
             <AnimatePresence>
               {isSearchOpen && (
                 <motion.div
-                  initial={{ opacity: 0, y: -20, scale: 0.8 }}
-                  animate={{ opacity: 1, y: 40, scale: 1 }}
-                  exit={{ opacity: 0, y: -20, scale: 0.8 }}
+                  initial={{ opacity: 0, x: 40, scale: 0.8 }}
+                  animate={{ opacity: 1, x: 0, scale: 1 }}
+                  exit={{ opacity: 0, x: 40, scale: 0.8 }}
                   transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                  className="absolute right-20 w-64 bg-white rounded-lg shadow-xl p-2 border border-gray-200"
+                  className="absolute right-20 w-40 glass-search"
                 >
                   <input
                     type="text"
-                    placeholder="Search..."
+                    placeholder="Search for services..."
                     value={searchQuery}
                     onChange={handleSearch}
-                    className="w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f95006]"
+                    className="w-full px-2 py-1 rounded-lg focus:outline-none bg-transparent placeholder:text-[#03168e]/70"
                     autoFocus
                   />
                 </motion.div>
@@ -153,7 +153,7 @@ export default function Header() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsSearchOpen(!isSearchOpen)}
-              className="text-white hover:text-[#f95006] transition-colors duration-300"
+              className="glass-btn"
               aria-label="Toggle search"
             >
               <Search size={20} />
@@ -161,7 +161,7 @@ export default function Header() {
             <motion.button 
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className="md:hidden text-white hover:text-[#f95006] transition-colors duration-300"
+              className="md:hidden glass-btn"
               onClick={handleMobileMenuClick}
               aria-label="Toggle menu"
             >
@@ -178,14 +178,14 @@ export default function Header() {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="mobile-menu"
+            className="mobile-menu mobile-menu-glass"
           >
             <div className="flex justify-end p-4">
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-white hover:text-[#f95006]"
+                className="glass-btn"
               >
                 <X size={24} />
               </motion.button>
@@ -202,7 +202,7 @@ export default function Header() {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleDownloadApp}
-                className="text-white hover:text-[#f95006] transition-colors duration-300 px-6 py-2 flex items-center gap-2"
+                className="glass-btn px-6 py-2 flex items-center gap-2"
               >
                 <Download size={20} />
                 <span>Download App</span>
@@ -214,7 +214,7 @@ export default function Header() {
                   setShowBooking(true);
                   setIsMobileMenuOpen(false);
                 }}
-                className="bg-[#f95006] text-white px-4 py-2 rounded-full mx-6 mt-4 hover:bg-white hover:text-[#f95006] transition-all duration-300"
+                className="glass-btn mx-6 mt-4"
               >
                 Book Now
               </motion.button>
@@ -257,7 +257,7 @@ export default function Header() {
               </div>
               <button
                 onClick={() => setShowDownloadPopup(false)}
-                className="ml-auto flex-shrink-0 text-gray-400 hover:text-gray-500"
+                className="ml-auto flex-shrink-0 glass-btn"
               >
                 <X size={20} />
               </button>
@@ -285,7 +285,7 @@ export default function Header() {
             >
               <button
                 onClick={() => setShowBooking(false)}
-                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+                className="absolute top-4 right-4 glass-btn"
               >
                 <X size={24} />
               </button>

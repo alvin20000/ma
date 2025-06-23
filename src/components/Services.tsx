@@ -58,7 +58,7 @@ const Services = () => {
                 href={`https://wa.me/256766455792?text=I'm interested in your ${service.title} service`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-4 py-2 bg-[#03168e] text-white font-semibold rounded-lg hover:bg-[#f95006] transition-colors"
+                className="glass-btn inline-flex items-center px-4 py-2 font-semibold"
               >
                 Book on WhatsApp
               </a>

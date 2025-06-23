@@ -95,9 +95,7 @@ export default function Reviews() {
                 initial={{ scale: 0.8 }}
                 animate={{ scale: currentReview === index ? 1.2 : 1 }}
                 transition={{ duration: 0.3 }}
-                className={`w-3 h-3 rounded-full transition-colors duration-300 ${
-                  currentReview === index ? 'bg-[#f95006]' : 'bg-gray-300'
-                }`}
+                className={`glass-btn w-3 h-3 p-0 rounded-full transition-colors duration-300 ${currentReview === index ? 'ring-2 ring-[#f95006]' : ''}`}
                 onClick={() => setCurrentReview(index)}
               />
             ))}
