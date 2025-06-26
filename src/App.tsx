@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -15,14 +15,16 @@ import ScrollToTop from './components/ScrollToTop';
 import Booking from './components/Booking';
 
 function App() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       className="min-h-screen pt-16 overflow-x-hidden"
     >
-      <Header />
-      <main className="mx-2 sm:mx-4 md:mx-8">
+      <Header isMobileMenuOpen={isMobileMenuOpen} setIsMobileMenuOpen={setIsMobileMenuOpen} />
+      <main className={isMobileMenuOpen ? 'mx-2 sm:mx-4 md:mx-8 filter blur-sm pointer-events-none select-none' : 'mx-2 sm:mx-4 md:mx-8'}>
         <Hero />
         <TrendingEvents />
         <Services />
@@ -33,7 +35,7 @@ function App() {
         <Reviews />
         <Contact />
       </main>
-      <Footer />
+      <Footer className={isMobileMenuOpen ? 'filter blur-sm pointer-events-none select-none' : ''} />
       <ScrollToTop />
     </motion.div>
   );

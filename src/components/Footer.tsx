@@ -2,9 +2,13 @@ import { Facebook, Instagram, Twitter, Mail, Search } from 'lucide-react';
 import { motion } from 'framer-motion';
 import footerImage from '../assets/images/logos/logo.png';
 
-export default function Footer() {
+interface FooterProps {
+  className?: string;
+}
+
+export default function Footer({ className = '' }: FooterProps) {
   return (
-    <footer className="footer-glass text-white pt-16 pb-8 px-8">
+    <footer className={`footer-glass text-white pt-16 pb-8 px-8 ${className}`}>
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12 text-center md:text-left">
           {/* Logo & About */}

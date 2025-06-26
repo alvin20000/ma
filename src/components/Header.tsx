@@ -4,8 +4,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Booking from './Booking';
 import logo from '../assets/images/logos/logo.png';
 
-export default function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+interface HeaderProps {
+  isMobileMenuOpen: boolean;
+  setIsMobileMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function Header({ isMobileMenuOpen, setIsMobileMenuOpen }: HeaderProps) {
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -63,6 +67,7 @@ export default function Header() {
       }
     }
   };
+
 
   const handleDownloadApp = () => {
     setShowDownloadPopup(true);
