@@ -69,7 +69,6 @@ export default function Header({ activeSection, setActiveSection, isMobileMenuOp
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
     >
-      <span className="nav-icon">{item.icon}</span>
       <span className="nav-text">{item.label}</span>
     </motion.button>
   );
@@ -78,29 +77,11 @@ export default function Header({ activeSection, setActiveSection, isMobileMenuOp
     <header className="fixed top-0 left-0 right-0 z-50 modern-header">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-20">
-          {/* Logo */}
-          <motion.div 
-            className="flex items-center space-x-3"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="logo-container">
-              <img
-                src={logo}
-                alt="M.A Events Logo"
-                className="h-12 w-auto"
-              />
-            </div>
-            <div className="hidden sm:block">
-              <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
-                M.A Events
-              </h1>
-            </div>
-          </motion.div>
+          {/* Empty space for logo removal */}
+          <div></div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-2">
+          <nav className="hidden lg:flex items-center justify-center space-x-1 flex-1">
             {navigationItems.map((item) => (
               <NavLink key={item.id} item={item} />
             ))}
@@ -115,14 +96,14 @@ export default function Header({ activeSection, setActiveSection, isMobileMenuOp
                   initial={{ opacity: 0, width: 0 }}
                   animate={{ opacity: 1, width: 'auto' }}
                   exit={{ opacity: 0, width: 0 }}
-                  className="modern-search-container"
+                  className="absolute top-full right-0 mt-2 z-50"
                 >
                   <input
                     type="text"
                     placeholder="Search sections..."
                     value={searchQuery}
                     onChange={handleSearch}
-                    className="modern-search-input"
+                    className="modern-search-dropdown"
                     autoFocus
                   />
                 </motion.div>
@@ -191,7 +172,6 @@ export default function Header({ activeSection, setActiveSection, isMobileMenuOp
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    {item.icon}
                     <span>{item.label}</span>
                   </motion.button>
                 ))}

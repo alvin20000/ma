@@ -60,7 +60,7 @@ export default function Hero({ onNavigate }: HeroProps) {
           key={index}
           initial={{ opacity: 0 }}
           animate={{ 
-            opacity: currentSlide === index ? 0.3 : 0,
+            opacity: currentSlide === index ? 1 : 0,
             scale: currentSlide === index ? 1 : 1.1
           }}
           transition={{ duration: 1 }}
@@ -75,13 +75,13 @@ export default function Hero({ onNavigate }: HeroProps) {
         </motion.div>
       ))}
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 via-blue-800/60 to-blue-700/80" />
+      {/* Light Overlay for text readability */}
+      <div className="absolute inset-0 bg-black/20" />
 
       {/* Content */}
-      <div className="relative z-10 h-full flex items-center">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl">
+      <div className="relative z-10 h-full flex items-center justify-center">
+        <div className="container mx-auto px-4 text-center">
+          <div className="max-w-4xl mx-auto">
             <motion.div
               key={currentSlide}
               initial={{ opacity: 0, y: 30 }}
