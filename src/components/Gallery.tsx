@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { ChevronRight, X } from 'lucide-react';
+import { ChevronRight, ChevronLeft, X } from 'lucide-react';
 
 // Import images
 import image1 from '../assets/images/gallery/1.jpg';
