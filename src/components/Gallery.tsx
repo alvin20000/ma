@@ -1,111 +1,230 @@
 import { motion } from 'framer-motion';
-import GalleryImage from './GalleryImage';
-import image1 from '../assets/images/gallery/18.jpg';
-import image2 from '../assets/images/gallery/1.jpg';
-import image3 from '../assets/images/gallery/9.jpg';
-import image4 from '../assets/images/gallery/16.jpg';
-import image5 from '../assets/images/gallery/12.jpg';
-import image6 from '../assets/images/gallery/14.jpg';
-import image7 from '../assets/images/gallery/8.jpg';
-import image8 from '../assets/images/gallery/20.jpg';
-import image9 from '../assets/images/gallery/6.jpg';
-import image10 from '../assets/images/gallery/13.jpg';
-import image11 from '../assets/images/gallery/5.jpg';
-import image12 from '../assets/images/gallery/11.jpg';
+import { useState } from 'react';
+import { ChevronRight, X } from 'lucide-react';
 
-const galleryItems = [
-  {
-    id: 1,
-    image: image1,
-    title: "Elegant Wedding Setup",
-  },
-  {
-    id: 2,
-    image: image2,
-    title: "Corporate Event Venue",
+// Import images
+import image1 from '../assets/images/gallery/1.jpg';
+import image2 from '../assets/images/gallery/2.jpg';
+import image3 from '../assets/images/gallery/3.jpg';
+import image4 from '../assets/images/gallery/4.jpg';
+import image5 from '../assets/images/gallery/5.jpg';
+import image6 from '../assets/images/gallery/6.jpg';
+import image7 from '../assets/images/gallery/7.jpg';
+import image8 from '../assets/images/gallery/8.jpg';
+import image9 from '../assets/images/gallery/9.jpg';
+import image10 from '../assets/images/gallery/10.jpg';
+import image11 from '../assets/images/gallery/11.jpg';
+import image12 from '../assets/images/gallery/12.jpg';
+import image13 from '../assets/images/gallery/13.jpg';
+import image14 from '../assets/images/gallery/14.jpg';
+import image15 from '../assets/images/gallery/15.jpg';
+import image16 from '../assets/images/gallery/16.jpg';
+import image17 from '../assets/images/gallery/17.jpg';
+import image18 from '../assets/images/gallery/18.jpg';
+import image19 from '../assets/images/gallery/19.jpg';
+import image20 from '../assets/images/gallery/20.jpg';
 
+const galleryCategories = [
+  {
+    id: 'graduation',
+    name: 'Graduation',
+    coverImage: image1,
+    images: [image1, image2, image3],
+    count: 3
   },
   {
-    id: 3,
-    image: image3,
-    title: "Birthday Party Decoration",
+    id: 'wedding',
+    name: 'Wedding',
+    coverImage: image4,
+    images: [image4, image5, image6, image7, image8],
+    count: 5
   },
   {
-    id: 4,
-    image: image4,
-    title: "Catering Setup",
+    id: 'birthday',
+    name: 'Birthday',
+    coverImage: image9,
+    images: [image9, image10, image11],
+    count: 3
   },
   {
-    id: 5,
-    image: image5,
-    title: "Conference Setup",
+    id: 'introduction',
+    name: 'Introduction',
+    coverImage: image12,
+    images: [image12, image13, image14, image15],
+    count: 4
   },
   {
-    id: 6,
-    image: image6,
-    title: "Garden Wedding",
+    id: 'baby-showers',
+    name: 'Baby Showers',
+    coverImage: image16,
+    images: [image16, image17],
+    count: 2
   },
   {
-    id: 7,
-    image: image7,
-    title: "Anniversary Celebration",
+    id: 'meetings',
+    name: 'Meetings',
+    coverImage: image18,
+    images: [image18, image19],
+    count: 2
   },
   {
-    id: 8,
-    image: image8,
-    title: "Themed Party Setup",
-  },
-  {
-    id: 9,
-    image: image9,
-    title: "Themed Party Setup",
-  },
-  {
-    id: 10,
-    image: image10,
-    title: "Themed Party Setup",
-  },
-  {
-    id: 11,
-    image: image11,
-    title: "Themed Party Setup",
-  },
-  {
-    id: 12,
-    image: image12,
-    title: "Themed Party Setup",
+    id: 'others',
+    name: 'Others',
+    coverImage: image20,
+    images: [image20],
+    count: 1
   }
 ];
 
 export default function Gallery() {
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  const selectedCategoryData = galleryCategories.find(cat => cat.id === selectedCategory);
+
   return (
-    <section id="gallery" className="py-20 bg-gray-50">
+    <section className="py-20 bg-gradient-to-br from-blue-50 to-blue-100 min-h-screen">
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-4xl font-bold text-center text-[#03168e] mb-12"
+          className="text-4xl font-bold text-center bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent mb-12"
         >
           Our Gallery
         </motion.h2>
-        
-        <div className="gallery-grid">
-          {galleryItems.map((item, index) => (
+
+        {!selectedCategory ? (
+          // Category Grid View
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {galleryCategories.map((category, index) => (
+              <motion.div
+                key={category.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="gallery-category-card"
+                onClick={() => setSelectedCategory(category.id)}
+              >
+                <div className="relative overflow-hidden rounded-t-xl">
+                  <img
+                    src={category.coverImage}
+                    alt={category.name}
+                    className="w-full h-48 object-cover transition-transform duration-300 hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <h3 className="text-xl font-semibold">{category.name}</h3>
+                    <p className="text-sm opacity-90">{category.count} photos</p>
+                  </div>
+                  <div className="absolute top-4 right-4">
+                    <div className="modern-icon-btn bg-white/20 backdrop-blur-sm">
+                      <ChevronRight size={20} className="text-white" />
+                    </div>
+                  </div>
+                </div>
+                <div className="p-4 bg-white">
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-600">View Collection</span>
+                    <span className="text-blue-600 font-semibold">{category.count} items</span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        ) : (
+          // Category Images View
+          <div>
+            <div className="flex items-center justify-between mb-8">
+              <motion.button
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                onClick={() => setSelectedCategory(null)}
+                className="modern-action-btn"
+              >
+                ← Back to Categories
+              </motion.button>
+              <h3 className="text-2xl font-semibold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+                {selectedCategoryData?.name}
+              </h3>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {selectedCategoryData?.images.map((image, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="gallery-image-card"
+                  onClick={() => setSelectedImage(image)}
+                >
+                  <img
+                    src={image}
+                    alt={`${selectedCategoryData.name} ${index + 1}`}
+                    className="w-full h-64 object-cover"
+                  />
+                  <div className="gallery-image-overlay">
+                    <div className="text-center text-white">
+                      <p className="text-lg font-semibold mb-4">
+                        {selectedCategoryData.name} Event
+                      </p>
+                      <div className="flex space-x-4">
+                        <a
+                          href={`https://wa.me/256766455792?text=I'm interested in ${selectedCategoryData.name} event planning`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="modern-primary-btn"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          WhatsApp
+                        </a>
+                        <a
+                          href="tel:+256751256167"
+                          className="modern-action-btn"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          Call
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Image Modal */}
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+            onClick={() => setSelectedImage(null)}
+          >
             <motion.div
-              key={item.id}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.8 }}
+              className="relative max-w-4xl max-h-full"
+              onClick={(e) => e.stopPropagation()}
             >
-              <GalleryImage
-                image={item.image}
-                title={item.title}
-                price={item.price}
+              <img
+                src={selectedImage}
+                alt="Gallery Image"
+                className="max-w-full max-h-full object-contain rounded-lg"
               />
+              <button
+                onClick={() => setSelectedImage(null)}
+                className="absolute top-4 right-4 modern-icon-btn bg-black/50 text-white"
+              >
+                <X size={24} />
+              </button>
             </motion.div>
-          ))}
-        </div>
+          </motion.div>
+        )}
       </div>
     </section>
   );
