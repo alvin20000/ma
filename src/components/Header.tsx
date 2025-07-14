@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Search, Download, Home, Briefcase, Camera, Users, Star, MessageCircle, Phone } from 'lucide-react';
+import { Menu, X, Search, Download } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Booking from './Booking';
 import logo from '../assets/images/logos/logo.png';
@@ -28,13 +28,13 @@ export default function Header({ activeSection, setActiveSection, isMobileMenuOp
   }, []);
 
   const navigationItems = [
-    { id: 'home', label: 'Home', icon: <Home size={18} /> },
-    { id: 'services', label: 'Services', icon: <Briefcase size={18} /> },
-    { id: 'gallery', label: 'Gallery', icon: <Camera size={18} /> },
-    { id: 'about', label: 'About', icon: <Users size={18} /> },
-    { id: 'team', label: 'Team', icon: <Users size={18} /> },
-    { id: 'reviews', label: 'Reviews', icon: <Star size={18} /> },
-    { id: 'contact', label: 'Contact', icon: <Phone size={18} /> }
+    { id: 'home', label: 'Home' },
+    { id: 'services', label: 'Services' },
+    { id: 'gallery', label: 'Gallery' },
+    { id: 'about', label: 'About' },
+    { id: 'team', label: 'Team' },
+    { id: 'reviews', label: 'Reviews' },
+    { id: 'contact', label: 'Contact' }
   ];
 
   const handleNavClick = (sectionId: string) => {
@@ -65,29 +65,42 @@ export default function Header({ activeSection, setActiveSection, isMobileMenuOp
   const NavLink = ({ item }: { item: typeof navigationItems[0] }) => (
     <motion.button
       onClick={() => handleNavClick(item.id)}
-      className={`modern-nav-link ${activeSection === item.id ? 'active' : ''}`}
+      className={`nav-link-centered ${activeSection === item.id ? 'active' : ''}`}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
     >
-      <span className="nav-text">{item.label}</span>
+      {item.label}
     </motion.button>
   );
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 modern-header">
+    <header className="fixed top-0 left-0 right-0 z-50 footer-header">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-20">
-          {/* Empty space for logo removal */}
-          <div></div>
+          {/* Logo */}
+          <div className="flex items-center">
+            <motion.div 
+              className="h-12 w-12"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <img
+                src={logo}
+                alt="M.A Events Logo"
+                className="h-full w-full object-contain"
+              />
+            </motion.div>
+          </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center justify-center space-x-1 flex-1">
+          <nav className="hidden lg:flex items-center justify-center">
             {navigationItems.map((item) => (
               <NavLink key={item.id} item={item} />
             ))}
           </nav>
 
-          {/* Action Buttons */}
+          {/* Search and Action Buttons */}
           <div className="flex items-center space-x-3">
             {/* Search */}
             <AnimatePresence>
@@ -96,7 +109,7 @@ export default function Header({ activeSection, setActiveSection, isMobileMenuOp
                   initial={{ opacity: 0, width: 0 }}
                   animate={{ opacity: 1, width: 'auto' }}
                   exit={{ opacity: 0, width: 0 }}
-                  className="absolute top-full right-0 mt-2 z-50"
+                  className="absolute top-full right-4 mt-2 z-50"
                 >
                   <input
                     type="text"
@@ -114,7 +127,7 @@ export default function Header({ activeSection, setActiveSection, isMobileMenuOp
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsSearchOpen(!isSearchOpen)}
-              className="modern-icon-btn"
+              className="header-icon-btn"
             >
               <Search size={20} />
             </motion.button>
@@ -124,7 +137,7 @@ export default function Header({ activeSection, setActiveSection, isMobileMenuOp
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={handleDownloadApp}
-              className="hidden md:flex modern-action-btn"
+              className="hidden md:flex header-action-btn"
             >
               <Download size={18} />
               <span>App</span>
@@ -135,7 +148,7 @@ export default function Header({ activeSection, setActiveSection, isMobileMenuOp
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setShowBooking(true)}
-              className="hidden md:flex modern-primary-btn"
+              className="hidden md:flex header-primary-btn"
             >
               Book Now
             </motion.button>
@@ -144,7 +157,7 @@ export default function Header({ activeSection, setActiveSection, isMobileMenuOp
             <motion.button 
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className="lg:hidden modern-icon-btn"
+            className="lg:hidden header-icon-btn"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -160,7 +173,7 @@ export default function Header({ activeSection, setActiveSection, isMobileMenuOp
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="modern-mobile-menu"
+            className="footer-mobile-menu"
           >
             <div className="container mx-auto px-4 py-6">
               <div className="grid grid-cols-2 gap-3 mb-6">
@@ -168,7 +181,7 @@ export default function Header({ activeSection, setActiveSection, isMobileMenuOp
                   <motion.button
                     key={item.id}
                     onClick={() => handleNavClick(item.id)}
-                    className={`modern-mobile-nav-item ${activeSection === item.id ? 'active' : ''}`}
+                    className={`footer-mobile-nav-item ${activeSection === item.id ? 'active' : ''}`}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -182,7 +195,7 @@ export default function Header({ activeSection, setActiveSection, isMobileMenuOp
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={handleDownloadApp}
-                  className="modern-action-btn w-full justify-center"
+                  className="header-action-btn w-full justify-center"
                 >
                   <Download size={18} />
                   <span>Download App</span>
@@ -195,7 +208,7 @@ export default function Header({ activeSection, setActiveSection, isMobileMenuOp
                     setShowBooking(true);
                     setIsMobileMenuOpen(false);
                   }}
-                  className="modern-primary-btn w-full justify-center"
+                  className="header-primary-btn w-full justify-center"
                 >
                   Book Now
                 </motion.button>
@@ -212,10 +225,10 @@ export default function Header({ activeSection, setActiveSection, isMobileMenuOp
             initial={{ opacity: 0, y: -50, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -50, scale: 0.9 }}
-            className="modern-popup"
+            className="download-popup"
           >
             <div className="flex items-start space-x-4">
-              <div className="modern-popup-icon">
+              <div className="popup-icon">
                 <Download size={24} />
               </div>
               <div className="flex-1">
@@ -224,13 +237,13 @@ export default function Header({ activeSection, setActiveSection, isMobileMenuOp
                   Get the M-A Events app for a better experience.
                 </p>
                 <div className="flex space-x-2">
-                  <button className="modern-popup-btn">App Store</button>
-                  <button className="modern-popup-btn">Play Store</button>
+                  <button className="popup-btn">App Store</button>
+                  <button className="popup-btn">Play Store</button>
                 </div>
               </div>
               <button
                 onClick={() => setShowDownloadPopup(false)}
-                className="modern-icon-btn"
+                className="header-icon-btn"
               >
                 <X size={20} />
               </button>
@@ -261,7 +274,7 @@ export default function Header({ activeSection, setActiveSection, isMobileMenuOp
                 <h2 className="text-2xl font-bold text-gray-900">Book Our Services</h2>
                 <button
                   onClick={() => setShowBooking(false)}
-                  className="modern-icon-btn"
+                  className="header-icon-btn"
                 >
                   <X size={24} />
                 </button>
