@@ -74,7 +74,7 @@
   }
 
   .modern-mobile-menu {
-    @apply absolute top-full left-0 right-0 bg-gradient-to-br from-blue-600/95 to-blue-800/95 backdrop-filter backdrop-blur-20 border-t border-white/10 shadow-2xl;
+    @apply absolute top-full left-0 right-0 bg-gradient-to-br from-blue-600/95 to-blue-800/95 backdrop-filter backdrop-blur-xl border-t border-white/10 shadow-2xl;
   }
 
   .modern-mobile-nav-item {
