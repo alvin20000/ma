@@ -1,4 +1,5 @@
 import { Facebook, Instagram, Twitter, Mail, Search, MapPin, Phone, Clock, Heart } from 'lucide-react';
+import { Home, Link, MessageSquare, Bell } from 'lucide-react';
 import { motion } from 'framer-motion';
 import footerImage from '../assets/images/logos/logo.png';
 
@@ -37,11 +38,11 @@ export default function Footer({ className = '' }: FooterProps) {
   ];
 
   const quickLinks = [
-    { name: "Home", href: "#home" },
-    { name: "Services", href: "#services" },
-    { name: "Team", href: "#team" },
-    { name: "Reviews", href: "#reviews" },
-    { name: "Contact", href: "#contact" }
+    { name: "Home", href: "#home", icon: <Home className="w-4 h-4" /> },
+    { name: "Services", href: "#services", icon: <Link className="w-4 h-4" /> },
+    { name: "Team", href: "#team", icon: <Link className="w-4 h-4" /> },
+    { name: "Reviews", href: "#reviews", icon: <MessageSquare className="w-4 h-4" /> },
+    { name: "Contact", href: "#contact", icon: <Link className="w-4 h-4" /> }
   ];
 
   const contactInfo = [
@@ -139,11 +140,13 @@ export default function Footer({ className = '' }: FooterProps) {
                     <motion.li key={index}>
                       <motion.a
                         href={link.href}
-                        className="text-blue-200 hover:text-orange-400 transition-all duration-300 flex items-center group"
+                        className="text-blue-200 hover:text-orange-400 transition-all duration-300 flex items-center group space-x-3"
                         whileHover={{ x: 5 }}
                       >
-                        <div className="w-2 h-2 bg-orange-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        {link.name}
+                        <div className="text-orange-500 group-hover:scale-110 transition-transform duration-300">
+                          {link.icon}
+                        </div>
+                        <span>{link.name}</span>
                       </motion.a>
                     </motion.li>
                   ))}
@@ -176,9 +179,18 @@ export default function Footer({ className = '' }: FooterProps) {
 
               {/* Newsletter */}
               <motion.div variants={itemVariants}>
+                <div className="flex items-center mb-6">
+                  <motion.div
+                    className="w-8 h-8 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center mr-3"
+                    whileHover={{ rotate: 360, scale: 1.1 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <Bell className="w-5 h-5 text-white" />
+                  </motion.div>
                 <h3 className="text-xl font-bold mb-6 bg-gradient-to-r from-blue-300 to-blue-100 bg-clip-text text-transparent">
                   Stay Updated
                 </h3>
+                </div>
                 <p className="text-blue-200 mb-6 leading-relaxed">
                   Subscribe to get updates on our latest events and exclusive offers.
                 </p>
