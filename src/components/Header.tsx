@@ -76,11 +76,11 @@ export default function Header({ activeSection, setActiveSection, isMobileMenuOp
   return (
     <header className="fixed top-0 left-0 right-0 z-50 footer-header">
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-24 px-8">
           {/* Logo */}
           <div className="flex items-center">
             <motion.div 
-              className="h-16 w-16"
+              className="h-20 w-20"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
@@ -101,7 +101,7 @@ export default function Header({ activeSection, setActiveSection, isMobileMenuOp
           </nav>
 
           {/* Search and Action Buttons */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-4 pr-4">
             {/* Search */}
             <AnimatePresence>
               {isSearchOpen && (
@@ -109,14 +109,14 @@ export default function Header({ activeSection, setActiveSection, isMobileMenuOp
                   initial={{ opacity: 0, width: 0 }}
                   animate={{ opacity: 1, width: 'auto' }}
                   exit={{ opacity: 0, width: 0 }}
-                  className="absolute top-full right-4 mt-2 z-50"
+                  className="absolute top-full right-8 mt-4 z-50"
                 >
                   <input
                     type="text"
                     placeholder="Search sections..."
                     value={searchQuery}
                     onChange={handleSearch}
-                    className="modern-search-dropdown"
+                    className="modern-search-dropdown shadow-2xl"
                     autoFocus
                   />
                 </motion.div>

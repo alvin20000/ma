@@ -229,36 +229,45 @@ export default function Hero({ onNavigate }: HeroProps) {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 bg-white">
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-blue-100">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-12"
+            className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <motion.h2
+              className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent mb-6"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
               Why Choose M.A Events?
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            </motion.h2>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
               We bring years of experience and passion to make your events extraordinary
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center group"
+                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 text-center group transform hover:-translate-y-3"
+                whileHover={{ scale: 1.05 }}
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                <motion.div 
+                  className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center text-white mx-auto mb-6"
+                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  transition={{ duration: 0.5 }}
+                >
                   {feature.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
+                </motion.div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">{feature.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
               </motion.div>
             ))}
           </div>
@@ -266,18 +275,22 @@ export default function Hero({ onNavigate }: HeroProps) {
       </section>
 
       {/* Services Preview */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-20 bg-gradient-to-br from-orange-50 to-orange-100">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-12"
+            className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <motion.h2
+              className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-600 to-orange-800 bg-clip-text text-transparent mb-6"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
               Our Premium Services
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            </motion.h2>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
               From intimate gatherings to grand celebrations, we handle every detail
             </p>
           </motion.div>
@@ -289,21 +302,25 @@ export default function Hero({ onNavigate }: HeroProps) {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group"
+                className="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 group border border-orange-100"
+                whileHover={{ scale: 1.02 }}
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300">
+                <motion.div 
+                  className="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-700 rounded-2xl flex items-center justify-center text-white mb-6"
+                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  transition={{ duration: 0.5 }}
+                >
                   {service.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">{service.title}</h3>
-                <p className="text-gray-600 mb-6">{service.description}</p>
+                </motion.div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-orange-600 transition-colors">{service.title}</h3>
+                <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={handleGetStarted}
-                  className="text-blue-600 font-semibold hover:text-blue-700 transition-colors duration-300 flex items-center space-x-2"
+                  className="w-full py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold rounded-xl hover:from-orange-600 hover:to-orange-700 transition-all duration-300 shadow-lg hover:shadow-xl"
                 >
                   <span>Learn More</span>
-                  <ArrowRight size={16} />
                 </motion.button>
               </motion.div>
             ))}
@@ -312,17 +329,25 @@ export default function Hero({ onNavigate }: HeroProps) {
       </section>
 
       {/* Call to Action */}
-      <section className="py-16 bg-gradient-to-r from-blue-600 to-blue-800">
+      <section className="py-20 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
+            className="max-w-4xl mx-auto"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            <motion.div
+              className="w-24 h-24 bg-white/20 rounded-3xl flex items-center justify-center mx-auto mb-8"
+              whileHover={{ rotate: 360, scale: 1.1 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Sparkles className="w-12 h-12 text-white" />
+            </motion.div>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 leading-tight">
               Ready to Plan Your Perfect Event?
             </h2>
-            <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-blue-100 mb-10 max-w-3xl mx-auto leading-relaxed">
               Let's bring your vision to life with our expert planning and attention to detail
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -330,8 +355,9 @@ export default function Hero({ onNavigate }: HeroProps) {
                 onClick={handleGetStarted}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-white text-blue-600 font-semibold rounded-xl hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="px-10 py-4 bg-white text-blue-600 font-bold rounded-2xl hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center justify-center space-x-2"
               >
+                <ArrowRight size={20} />
                 Start Planning Now
               </motion.button>
               <motion.a
@@ -340,8 +366,9 @@ export default function Hero({ onNavigate }: HeroProps) {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-300"
+                className="px-10 py-4 bg-white/10 backdrop-blur-sm border-2 border-white text-white font-bold rounded-2xl hover:bg-white hover:text-blue-600 transition-all duration-300 shadow-xl hover:shadow-2xl flex items-center justify-center space-x-2"
               >
+                <Heart size={20} />
                 Contact Us on WhatsApp
               </motion.a>
             </div>
