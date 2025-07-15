@@ -80,7 +80,7 @@ export default function Header({ activeSection, setActiveSection, isMobileMenuOp
           {/* Logo */}
           <div className="flex items-center">
             <motion.div 
-              className="h-12 w-12"
+              className="h-16 w-16"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}

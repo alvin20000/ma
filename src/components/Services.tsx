@@ -136,6 +136,71 @@ const Services = () => {
           </div>
         </motion.div>
       </div>
+
+      {/* Reviews Section */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.9 }}
+        className="mt-20"
+      >
+        <h3 className="text-3xl font-bold text-center text-gray-900 mb-12">
+          What Our Clients Say
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            {
+              name: "Alex Kazungu",
+              text: "M.A Events made our wedding day absolutely perfect! The attention to detail was incredible.",
+              rating: 5,
+              service: "Wedding Planning"
+            },
+            {
+              name: "Ladu David",
+              text: "Outstanding corporate event management. Professional team and excellent service.",
+              rating: 5,
+              service: "Corporate Events"
+            },
+            {
+              name: "Zimula Farid",
+              text: "The best catering service in town! Our guests couldn't stop praising the food.",
+              rating: 5,
+              service: "Catering Services"
+            }
+          ].map((review, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+            >
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
+                  {review.name.charAt(0)}
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-900">{review.name}</h4>
+                  <p className="text-sm text-blue-600">{review.service}</p>
+                </div>
+              </div>
+              <div className="flex text-orange-500 mb-3">
+                {[...Array(review.rating)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: i * 0.1 }}
+                  >
+                    ⭐
+                  </motion.div>
+                ))}
+              </div>
+              <p className="text-gray-600 italic leading-relaxed">"{review.text}"</p>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
     </section>
   );
 };
