@@ -530,5 +530,6 @@ export default function Hero({ onNavigate }: HeroProps) {
           </div>
         </div>
       </section>
+    </div>
   );
 }
