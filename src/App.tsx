@@ -25,7 +25,6 @@ function App() {
     gallery: <Gallery />,
     about: <AboutUs />,
     team: <Team />,
-    reviews: <Reviews />,
     contact: <Contact />
   };
 

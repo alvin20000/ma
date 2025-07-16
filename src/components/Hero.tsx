@@ -376,5 +376,156 @@ export default function Hero({ onNavigate }: HeroProps) {
         </div>
       </section>
     </div>
+      {/* M-A Events Advertising Section */}
+      <section className="py-20 bg-gradient-to-br from-orange-50 to-orange-100">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Side - Flyer Slider */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="relative"
+            >
+              <div className="bg-white rounded-3xl p-8 shadow-2xl">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Our Latest Work</h3>
+                <div className="relative h-96 overflow-hidden rounded-2xl">
+                  {/* Flyer Slider */}
+                  <motion.div
+                    key={currentSlide}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8 }}
+                    className="absolute inset-0"
+                  >
+                    <img
+                      src={slides[currentSlide].image}
+                      alt={`M-A Events Flyer ${currentSlide + 1}`}
+                      className="w-full h-full object-cover rounded-2xl"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-2xl" />
+                    <div className="absolute bottom-4 left-4 right-4 text-white">
+                      <h4 className="text-lg font-semibold mb-2">{slides[currentSlide].title}</h4>
+                      <p className="text-sm opacity-90">{slides[currentSlide].subtitle}</p>
+                    </div>
+                  </motion.div>
+                </div>
+                
+                {/* Slider Controls */}
+                <div className="flex justify-center mt-6 space-x-2">
+                  {slides.map((_, index) => (
+                    <motion.button
+                      key={index}
+                      initial={{ scale: 0.8 }}
+                      animate={{ 
+                        scale: currentSlide === index ? 1.2 : 1,
+                        opacity: currentSlide === index ? 1 : 0.6
+                      }}
+                      transition={{ duration: 0.3 }}
+                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                        currentSlide === index 
+                          ? 'bg-orange-500 shadow-lg' 
+                          : 'bg-gray-300 hover:bg-orange-300'
+                      }`}
+                      onClick={() => setCurrentSlide(index)}
+                    />
+                  ))}
+            {/* Right Side - Content */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="space-y-8"
+            >
+              <div>
+                <motion.h2
+                  className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-600 to-orange-800 bg-clip-text text-transparent mb-6"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  Why Choose M-A Events?
+                </motion.h2>
+                <p className="text-xl text-gray-700 leading-relaxed mb-8">
+                  We don't just plan events - we create unforgettable experiences that leave lasting impressions on you and your guests.
+                </p>
+              </div>
+                </div>
+              {/* Features List */}
+              <div className="space-y-6">
+                {[
+                  {
+                    icon: <Star className="w-6 h-6" />,
+                    title: "Premium Quality",
+                    description: "Only the finest materials and professional service"
+                  },
+                  {
+                    icon: <Users className="w-6 h-6" />,
+                    title: "Expert Team",
+                    description: "Experienced professionals dedicated to your success"
+                  },
+                  {
+                    icon: <Award className="w-6 h-6" />,
+                    title: "Award Winning",
+                    description: "Recognized excellence in event planning and execution"
+                  },
+                  {
+                    icon: <Heart className="w-6 h-6" />,
+                    title: "Personal Touch",
+                    description: "Every event is tailored to your unique vision"
+                  }
+                ].map((feature, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="flex items-start space-x-4 group"
+                    whileHover={{ x: 10 }}
+                  >
+                    <motion.div
+                      className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center text-white flex-shrink-0"
+                      whileHover={{ rotate: 360, scale: 1.1 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      {feature.icon}
+                    </motion.div>
+                    <div>
+                      <h4 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-orange-600 transition-colors">
+                        {feature.title}
+                      </h4>
+                      <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+              </div>
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 pt-6">
+                <motion.button
+                  onClick={handleGetStarted}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold rounded-xl hover:from-orange-600 hover:to-orange-700 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
+                >
+                  <Sparkles size={20} />
+                  <span>Start Your Event</span>
+                </motion.button>
+                <motion.a
+                  href="https://wa.me/256766455792?text=I'd like to learn more about M-A Events"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 bg-white border-2 border-orange-500 text-orange-600 font-semibold rounded-xl hover:bg-orange-50 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
+                >
+                  <Heart size={20} />
+                  <span>Learn More</span>
+                </motion.a>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+            </motion.div>
   );
 }

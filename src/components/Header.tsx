@@ -33,7 +33,6 @@ export default function Header({ activeSection, setActiveSection, isMobileMenuOp
     { id: 'gallery', label: 'Gallery' },
     { id: 'about', label: 'About' },
     { id: 'team', label: 'Team' },
-    { id: 'reviews', label: 'Reviews' },
     { id: 'contact', label: 'Contact' }
   ];
 
@@ -169,52 +168,131 @@ export default function Header({ activeSection, setActiveSection, isMobileMenuOp
       {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="footer-mobile-menu"
-          >
-            <div className="container mx-auto px-4 py-6">
-              <div className="grid grid-cols-2 gap-3 mb-6">
-                {navigationItems.map((item) => (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
+            
+            {/* Mobile Menu Panel */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="fixed top-0 right-0 h-full w-80 bg-gradient-to-br from-blue-900/95 to-blue-800/95 backdrop-blur-xl shadow-2xl z-50 border-l border-white/10"
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between p-6 border-b border-white/10">
+                <div className="flex items-center">
+                  <div className="h-12 w-12 mr-3">
+                    <img
+                      src={logo}
+                      alt="M.A Events Logo"
+                      className="h-full w-full object-contain"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-white font-bold text-lg">M.A Events</h3>
+                    <p className="text-blue-200 text-sm">Premium Events</p>
+                  </div>
+                </div>
+                <motion.button
+                  whileHover={{ scale: 1.1, rotate: 90 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
+                >
+                  <X size={20} />
+                </motion.button>
+              </div>
+
+              {/* Navigation */}
+              <div className="p-6">
+                <div className="space-y-2 mb-8">
+                  {navigationItems.map((item, index) => (
+                    <motion.button
+                      key={item.id}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      onClick={() => handleNavClick(item.id)}
+                      className={`w-full text-left p-4 rounded-xl transition-all duration-300 flex items-center space-x-3 group ${
+                        activeSection === item.id 
+                          ? 'bg-white/20 text-white border border-white/30' 
+                          : 'text-white/80 hover:bg-white/10 hover:text-white'
+                      }`}
+                      whileHover={{ scale: 1.02, x: 5 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <div className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        activeSection === item.id ? 'bg-orange-500' : 'bg-white/40 group-hover:bg-orange-400'
+                      }`} />
+                      <span className="font-medium">{item.label}</span>
+                    </motion.button>
+                  ))}
+                </div>
+                
+                {/* Action Buttons */}
+                <div className="space-y-3">
                   <motion.button
-                    key={item.id}
-                    onClick={() => handleNavClick(item.id)}
-                    className={`footer-mobile-nav-item ${activeSection === item.id ? 'active' : ''}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.7 }}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
+                    onClick={handleDownloadApp}
+                    className="w-full p-4 bg-white/10 backdrop-blur-sm rounded-xl text-white font-medium hover:bg-white/20 transition-all duration-300 flex items-center justify-center space-x-2 border border-white/20"
                   >
-                    <span>{item.label}</span>
+                    <Download size={18} />
+                    <span>Download App</span>
                   </motion.button>
-                ))}
+                  
+                  <motion.button
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8 }}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => {
+                      setShowBooking(true);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="w-full p-4 bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl text-white font-semibold hover:from-orange-600 hover:to-orange-700 transition-all duration-300 shadow-lg flex items-center justify-center space-x-2"
+                  >
+                    <span>Book Now</span>
+                  </motion.button>
+                </div>
               </div>
-              
-              <div className="flex flex-col space-y-3">
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={handleDownloadApp}
-                  className="header-action-btn w-full justify-center"
-                >
-                  <Download size={18} />
-                  <span>Download App</span>
-                </motion.button>
-                
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() => {
-                    setShowBooking(true);
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className="header-primary-btn w-full justify-center"
-                >
-                  Book Now
-                </motion.button>
+
+              {/* Footer */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-white/10">
+                <div className="text-center">
+                  <p className="text-white/60 text-sm mb-3">Follow us on social media</p>
+                  <div className="flex justify-center space-x-4">
+                    {[
+                      { icon: '📘', label: 'Facebook' },
+                      { icon: '📷', label: 'Instagram' },
+                      { icon: '🐦', label: 'Twitter' }
+                    ].map((social, index) => (
+                      <motion.button
+                        key={index}
+                        whileHover={{ scale: 1.2, rotate: 360 }}
+                        whileTap={{ scale: 0.9 }}
+                        className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-white/20 transition-all duration-300"
+                      >
+                        <span className="text-lg">{social.icon}</span>
+                      </motion.button>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
 
