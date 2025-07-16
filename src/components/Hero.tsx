@@ -375,7 +375,7 @@ export default function Hero({ onNavigate }: HeroProps) {
           </motion.div>
         </div>
       </section>
-    </div>
+
       {/* M-A Events Advertising Section */}
       <section className="py-20 bg-gradient-to-br from-orange-50 to-orange-100">
         <div className="container mx-auto px-4">
@@ -430,6 +430,10 @@ export default function Hero({ onNavigate }: HeroProps) {
                       onClick={() => setCurrentSlide(index)}
                     />
                   ))}
+                </div>
+              </div>
+            </motion.div>
+
             {/* Right Side - Content */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
@@ -449,7 +453,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                   We don't just plan events - we create unforgettable experiences that leave lasting impressions on you and your guests.
                 </p>
               </div>
-                </div>
+
               {/* Features List */}
               <div className="space-y-6">
                 {[
@@ -498,7 +502,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                   </motion.div>
                 ))}
               </div>
-              </div>
+
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 pt-6">
                 <motion.button
@@ -526,6 +530,5 @@ export default function Hero({ onNavigate }: HeroProps) {
           </div>
         </div>
       </section>
-            </motion.div>
   );
 }
